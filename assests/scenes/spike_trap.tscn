@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://35wk3nx6xeeq"]
+
+[ext_resource type="Texture2D" uid="uid://deomn183bujb4" path="res://assests/arts/SpriteSheet.png" id="1_kjilk"]
+[ext_resource type="Script" uid="uid://c4edf0g0paeig" path="res://assests/scripts/spike_trap.gd" id="1_thdmx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thdmx"]
+atlas = ExtResource("1_kjilk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3mhn"]
+atlas = ExtResource("1_kjilk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50c73"]
+atlas = ExtResource("1_kjilk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74g0w"]
+atlas = ExtResource("1_kjilk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp1ms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thdmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3mhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50c73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74g0w")
+}],
+"loop": 0,
+"name": &"rise",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp1ms"]
+size = Vector2(17, 9.5)
+
+[node name="SpikeTrap" type="Node2D" unique_id=1363400550]
+script = ExtResource("1_thdmx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=474564175]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qp1ms")
+animation = &"rise"
+
+[node name="Trigger" type="Area2D" parent="." unique_id=785556515]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1688177225]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_qp1ms")
+
+[node name="DamageZone" type="Area2D" parent="." unique_id=375225890]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=296385571]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_qp1ms")
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="DamageZone" to="." method="_on_damage_zone_body_entered"]
