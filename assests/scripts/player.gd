@@ -18,13 +18,18 @@ const JUMP_BUFFERING = 0.12
 
 var dying = false
 var winning = false
+var title_screning = false
 var fade_speed = 1
+
+var coin = 0
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera: Camera2D = $Camera2D
 @onready var water: Area2D = $"../Water"
 @onready var door: AnimatedSprite2D = $"../door"
 @onready var re_label: Label = $"../RestartLabel"
+@onready var control: Control = $"../Control"
+@onready var coin_: Area2D = $"../Coin"
 
 var look_ahead_distance = 55
 var camera_offset_x = 0
@@ -59,12 +64,23 @@ func restart():
 	water.position = water_position
 	door.frame = 0
 	winning = false
+	re_label.visible = false
+	control.time = 0
+	coin = 0
+	coin_.show()
+	coin_.get_node("CollisionShape2D").set_deferred("disabled", false)
+
 
 
 func _ready() -> void:
 	re_label.visible = false
 	player_position = position
 	water_position = water.position
+	door.frame = 0
+	camera.zoom = Vector2(2, 2)
+	camera.position.x = 50
+	camera.position.y = -20
+	title_screning = true
 
 
 func _physics_process(delta: float) -> void:
@@ -93,7 +109,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
 
-	if Input.is_action_just_pressed("jump") and not winning:
+	if Input.is_action_just_pressed("jump") and not winning and not title_screning:
 		jump_pending = true
 		jump_timer = JUMP_BUFFERING
 	if jump_timer > 0:
@@ -108,7 +124,8 @@ func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_axis("move_left", "move_right")
 
-	if not winning:
+	if not winning and not title_screning:
+		camera.zoom = Vector2(1, 1)
 		if direction:
 			var target_speed = direction * speed
 			var rate = acceleration
@@ -127,11 +144,13 @@ func _physics_process(delta: float) -> void:
 
 	else:
 		velocity = Vector2.ZERO
-		re_label.visible = true
-		if Input.is_action_just_pressed("restart"):
-			restart()
+		if not title_screning:
+			re_label.visible = true
+			if Input.is_action_just_pressed("restart"):
+				restart()
 
-
+	if title_screning and Input.is_action_just_pressed("jump"):
+		title_screning = false
 	
 
 	move_and_slide()

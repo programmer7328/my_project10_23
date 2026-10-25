@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cxtj348f8rds7"]
+
+[ext_resource type="Script" uid="uid://byyyvdilsrd3s" path="res://assests/scripts/moving_platform.gd" id="1_0jayl"]
+[ext_resource type="Texture2D" uid="uid://hrr4gpbrqnwa" path="res://assests/arts/wood.png" id="1_mj4mx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jayl"]
+size = Vector2(48, 12)
+
+[node name="MovingPlatform" type="AnimatableBody2D" unique_id=711197818]
+script = ExtResource("1_0jayl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1762723324]
+texture_filter = 1
+texture = ExtResource("1_mj4mx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=236450487]
+shape = SubResource("RectangleShape2D_0jayl")

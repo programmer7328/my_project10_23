@@ -181,6 +181,7 @@ script = ExtResource("1_40kiy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2097342726]
 scale = Vector2(4.9999995, 4.608295)
+zoom = Vector2(5, 5)
 limit_left = -928
 limit_bottom = 220
 position_smoothing_enabled = true

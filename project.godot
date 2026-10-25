@@ -31,6 +31,7 @@ project/assembly_name="imjlg"
 [global_group]
 
 player=""
+water=""
 
 [input]
 

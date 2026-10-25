@@ -266,7 +266,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Water" type="Area2D" unique_id=913257318]
+[node name="Water" type="Area2D" unique_id=913257318 groups=["water"]]
 script = ExtResource("1_ovoap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1088889350]

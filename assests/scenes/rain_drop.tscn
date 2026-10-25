@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dkeaaufhlnvkj"]
+
+[ext_resource type="Texture2D" uid="uid://bqag14bdct6fk" path="res://assests/arts/RainDropSprite.png" id="1_2lvno"]
+[ext_resource type="Script" uid="uid://croj56gp1wc6m" path="res://assests/scripts/rain_drop.gd" id="1_bcj7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp1ms"]
+size = Vector2(1, 5)
+
+[node name="RainDrop" type="Area2D" unique_id=1598921524]
+script = ExtResource("1_bcj7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1899518882]
+texture_filter = 1
+texture = ExtResource("1_2lvno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1902379391]
+shape = SubResource("RectangleShape2D_qp1ms")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
