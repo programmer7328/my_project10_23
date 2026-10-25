@@ -31,7 +31,7 @@ var coin = 0
 @onready var control: Control = $"../Control"
 @onready var coin_: Area2D = $"../Coin"
 
-var look_ahead_distance = 55
+var look_ahead_distance = 0
 var camera_offset_x = 0
 var camera_speed = 5
 
@@ -126,6 +126,7 @@ func _physics_process(delta: float) -> void:
 
 	if not winning and not title_screning:
 		camera.zoom = Vector2(1, 1)
+		camera.position = Vector2.ZERO
 		if direction:
 			var target_speed = direction * speed
 			var rate = acceleration
@@ -139,8 +140,8 @@ func _physics_process(delta: float) -> void:
 			anim.flip_h = direction < 0
 		else:
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
-		camera_offset_x = move_toward(camera_offset_x, direction * look_ahead_distance, camera_speed * look_ahead_distance * delta)
-		camera.position.x = camera_offset_x
+		# camera_offset_x = move_toward(camera_offset_x, direction * look_ahead_distance, camera_speed * look_ahead_distance * delta)
+		# camera.position.x = camera_offset_x
 
 	else:
 		velocity = Vector2.ZERO

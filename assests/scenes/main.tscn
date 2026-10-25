@@ -785,9 +785,9 @@ text = "Drowning
 
 [node name="Label2" type="Label" parent="TitleScreen" unique_id=1795540288]
 layout_mode = 0
-offset_left = 91.0
+offset_left = 96.0
 offset_top = 76.0
-offset_right = 160.0
+offset_right = 165.0
 offset_bottom = 99.0
 theme_override_fonts/font = ExtResource("14_fma40")
 theme_override_font_sizes/font_size = 5
