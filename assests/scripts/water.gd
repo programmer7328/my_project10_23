@@ -5,30 +5,6 @@ extends Area2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var player: CharacterBody2D = $"../Player"
 
-# var wave_height = 8
-# var wave_width = 8
-# var wave_speed = 2
-# var wave_frequency = 0.05
-
-# func make_water_polygon() -> PackedVector2Array:
-# 	var points := PackedVector2Array()
-# 	var x := 0.0
-
-# 	while x < water_length:
-# 		var y = sin(x * wave_frequency) * wave_height
-# 		var next_x = min(x + wave_width, water_length)
-
-# 		points.append(Vector2(x, y))
-# 		points.append(Vector2(next_x, y))
-
-# 		x = next_x
-
-# 	points.append(Vector2(water_length, water_height))
-# 	points.append(Vector2(0, water_height))
-
-# 	return points
-
-
 var water_length = 5000
 var water_height = 1000
 var water_speed = 17

@@ -1,16 +1,20 @@
 extends CharacterBody2D
 
+#---variables---
+
+#player movements
 var jump_velocity = -280
 var speed = 150
-
 var acceleration = 750
 var friction = 850
 
+#jump animaitions
 var landing = false
 var jump_pending = false
 var jump_animation_pending = false
 var jump_starting = false
 
+#jump
 var coyote_timer = 0
 const COYOTE_TIME = 0.12
 var jump_timer = 0
@@ -31,12 +35,15 @@ var coin = 0
 @onready var control: Control = $"../Control"
 @onready var coin_: Area2D = $"../Coin"
 
+#camera things
 var look_ahead_distance = 0
 var camera_offset_x = 0
 var camera_speed = 5
 
 var player_position = Vector2(0,0)
 var water_position = Vector2(0,0)
+
+
 
 func _on_animation_finished() -> void:
 	if anim.animation == "jump_start":
@@ -72,6 +79,8 @@ func restart():
 
 
 
+
+
 func _ready() -> void:
 	re_label.visible = false
 	player_position = position
@@ -97,6 +106,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("restart"):
 			restart()
 		return
+
+	if winning:
+		camera.position.x = 90
 
 	var was_on_floor = is_on_floor()
 
@@ -140,8 +152,6 @@ func _physics_process(delta: float) -> void:
 			anim.flip_h = direction < 0
 		else:
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
-		# camera_offset_x = move_toward(camera_offset_x, direction * look_ahead_distance, camera_speed * look_ahead_distance * delta)
-		# camera.position.x = camera_offset_x
 
 	else:
 		velocity = Vector2.ZERO

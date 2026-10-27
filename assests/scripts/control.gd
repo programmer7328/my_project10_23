@@ -46,6 +46,9 @@ func _process(delta: float) -> void:
 		if time < high_score:
 			high_score = time
 			save_high_score()
+		elif high_score == 0:
+			high_score = time
+			save_high_score()
 		high_score_label.text = "High Score: "+(str(snappedf(high_score, 0.1)))+"sec"
 		coin_label.text = "Coins: "+(str(player.coin))+"/5"
 	else:

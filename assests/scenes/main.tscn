@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bl0xfnbi42omi" path="res://assests/scenes/water.tscn" id="6_goqih"]
 [ext_resource type="PackedScene" uid="uid://35wk3nx6xeeq" path="res://assests/scenes/spike_trap.tscn" id="7_xgvkb"]
 [ext_resource type="Texture2D" uid="uid://ra1g7pepi4vf" path="res://assests/arts/Sprite-door-Sheet.png" id="9_ycbfd"]
-[ext_resource type="Script" uid="uid://c1xqe7ap0nuom" path="res://assests/scripts/door.gd" id="11_6is8o"]
+[ext_resource type="Script" path="res://assests/scripts/door.gd" id="11_6is8o"]
 [ext_resource type="Script" uid="uid://2siy84r0otfd" path="res://assests/scripts/control.gd" id="11_c2cns"]
 [ext_resource type="Script" uid="uid://bc8b3b8ufivql" path="res://assests/scripts/title_screen.gd" id="12_c2cns"]
 [ext_resource type="PackedScene" uid="uid://dkeaaufhlnvkj" path="res://assests/scenes/rain_drop.tscn" id="13_68vls"]
@@ -591,7 +591,7 @@ tile_map_data = PackedByteArray("AAD9/wkAAAABAAAAAAD+/wkAAAABAAAAAAD//wkAAAABAAA
 tile_set = SubResource("TileSet_u8u7g")
 
 [node name="Player" parent="." unique_id=415225848 groups=["player"] instance=ExtResource("2_niywu")]
-position = Vector2(-808, 152)
+position = Vector2(-806, 152)
 
 [node name="door" type="AnimatedSprite2D" parent="." unique_id=2060455619]
 texture_filter = 1
@@ -605,43 +605,46 @@ script = ExtResource("11_6is8o")
 position = Vector2(4.75, 0)
 shape = SubResource("RectangleShape2D_w3gxv")
 
-[node name="Coin" parent="." unique_id=1497326851 instance=ExtResource("16_nsolk")]
-position = Vector2(-216, 71)
+[node name="Coin6" type="Node2D" parent="." unique_id=455085392]
+position = Vector2(-806, 152)
 
-[node name="Coin5" parent="." unique_id=312234230 instance=ExtResource("16_nsolk")]
-position = Vector2(1044, -670)
+[node name="Coin" parent="Coin6" unique_id=1497326851 instance=ExtResource("16_nsolk")]
+position = Vector2(590, -81)
 
-[node name="Coin4" parent="." unique_id=2143444827 instance=ExtResource("16_nsolk")]
-position = Vector2(306, -633)
+[node name="Coin5" parent="Coin6" unique_id=312234230 instance=ExtResource("16_nsolk")]
+position = Vector2(1850, -822)
 
-[node name="Coin3" parent="." unique_id=1066067146 instance=ExtResource("16_nsolk")]
-position = Vector2(712, -201)
+[node name="Coin4" parent="Coin6" unique_id=2143444827 instance=ExtResource("16_nsolk")]
+position = Vector2(1112, -785)
 
-[node name="Coin2" parent="." unique_id=467815651 instance=ExtResource("16_nsolk")]
-position = Vector2(162, 7)
+[node name="Coin3" parent="Coin6" unique_id=1066067146 instance=ExtResource("16_nsolk")]
+position = Vector2(1518, -353)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=104105794]
+[node name="Coin2" parent="Coin6" unique_id=467815651 instance=ExtResource("16_nsolk")]
+position = Vector2(968, -145)
 
-[node name="MovingPlatform" parent="Node2D" unique_id=711197818 instance=ExtResource("15_m6fke")]
+[node name="MovingPlatforms" type="Node2D" parent="." unique_id=104105794]
+
+[node name="MovingPlatform" parent="MovingPlatforms" unique_id=711197818 instance=ExtResource("15_m6fke")]
 position = Vector2(712, -631)
 
-[node name="MovingPlatform2" parent="Node2D" unique_id=1589605395 instance=ExtResource("15_m6fke")]
+[node name="MovingPlatform2" parent="MovingPlatforms" unique_id=1589605395 instance=ExtResource("15_m6fke")]
 position = Vector2(392, -494)
 
-[node name="MovingPlatform3" parent="Node2D" unique_id=924483118 instance=ExtResource("15_m6fke")]
+[node name="MovingPlatform3" parent="MovingPlatforms" unique_id=924483118 instance=ExtResource("15_m6fke")]
 position = Vector2(878, -664)
 
-[node name="MovingPlatform4" parent="Node2D" unique_id=1894670792 instance=ExtResource("15_m6fke")]
+[node name="MovingPlatform4" parent="MovingPlatforms" unique_id=1894670792 instance=ExtResource("15_m6fke")]
 position = Vector2(957, -687)
 
-[node name="MovingPlatform5" parent="Node2D" unique_id=229541969 instance=ExtResource("15_m6fke")]
+[node name="MovingPlatform5" parent="MovingPlatforms" unique_id=229541969 instance=ExtResource("15_m6fke")]
 position = Vector2(1044, -651)
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1162913599]
-position = Vector2(2092.931, 303.32352)
+[node name="Darkness" type="Polygon2D" parent="." unique_id=1162913599]
+position = Vector2(2093.0002, 303)
 scale = Vector2(35.35757, 32.184647)
 color = Color(0.039215688, 0.03529412, 0.26666668, 0.3882353)
-polygon = PackedVector2Array(-121.103645, -87.753746, 80.52219, -86.01379, -6.5878677, 33.60846, -20.276588, -33.28679, -20.276588, -34.622826, -20.276588, -34.6539, -20.30487, -34.6539, -20.30487, -34.71604, -20.333153, -34.71604, -20.333153, -34.74711, -20.389717, -34.74711, -20.389717, -34.778183, -22.426056, -34.778183, -22.426056, -34.74711, -22.482624, -34.74711, -22.482624, -34.71604, -22.510906, -34.71604, -22.510906, -34.6539, -22.539188, -34.6539, -22.539188, -34.405334, -22.56747, -34.405334, -22.56747, -34.343193, -22.595753, -34.343193, -22.595753, -34.31212, -22.652317, -34.31212, -22.652317, -34.28105, -22.991707, -34.28105, -22.991707, -33.28679, -20.276588, -33.28679, -6.5878677, 33.60846, -115.899666, 26.058279, -123.25311, -33.535355)
+polygon = PackedVector2Array(-121.103645, -87.753746, 80.52219, -86.01379, -6.5878677, 33.60846, -20.27855, -33.276733, -20.27855, -34.643845, -20.306831, -34.643845, -20.306831, -34.705986, -20.335114, -34.705986, -20.335114, -34.73706, -20.391678, -34.73706, -20.391678, -34.768127, -22.428017, -34.768127, -22.428017, -34.73706, -22.484585, -34.73706, -22.484585, -34.705986, -22.512867, -34.705986, -22.512867, -34.643845, -22.54115, -34.643845, -22.54115, -34.39528, -22.569431, -34.39528, -22.569431, -34.333138, -22.597713, -34.333138, -22.597713, -34.30207, -22.654278, -34.30207, -22.654278, -34.270996, -22.993668, -34.270996, -22.993668, -33.276733, -20.27855, -33.276733, -6.5878677, 33.60846, -115.899666, 26.058279, -123.25311, -33.535355)
 uv = PackedVector2Array(-84.5, -67, 34.5, -74, 38.39395, 2.636917, -4.4309998, 7.144806, -7.436249, -52.96038, -73.55194, -48.45249, -72.04932, 7.144806, -92.33484, 6.3934937)
 
 [node name="Water" parent="." unique_id=913257318 instance=ExtResource("6_goqih")]
@@ -800,9 +803,9 @@ position = Vector2(-886, 576)
 wait_time = 0.001
 autostart = true
 
-[node name="rain" type="Area2D" parent="." unique_id=81325820 groups=["water"]]
+[node name="Rain" type="Area2D" parent="." unique_id=81325820 groups=["water"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rain" unique_id=1118978673 groups=["water"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rain" unique_id=1118978673 groups=["water"]]
 position = Vector2(482, 747.25)
 shape = SubResource("RectangleShape2D_qp1ms")
 
