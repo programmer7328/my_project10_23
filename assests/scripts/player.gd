@@ -33,7 +33,7 @@ var coin = 0
 @onready var door: AnimatedSprite2D = $"../door"
 @onready var re_label: Label = $"../RestartLabel"
 @onready var control: Control = $"../Control"
-@onready var coin_: Area2D = $"../Coin"
+@onready var coin_: Area2D = $"../Coin6/Coin"
 
 #camera things
 var look_ahead_distance = 0
@@ -76,6 +76,7 @@ func restart():
 	coin = 0
 	coin_.show()
 	coin_.get_node("CollisionShape2D").set_deferred("disabled", false)
+	anim.play("idle")
 
 
 
@@ -152,6 +153,9 @@ func _physics_process(delta: float) -> void:
 			anim.flip_h = direction < 0
 		else:
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
+		# camera_offset_x = move_toward(camera_offset_x, direction * look_ahead_distance, camera_speed * look_ahead_distance * delta)
+		# camera.position.x = camera_offset_x
+
 
 	else:
 		velocity = Vector2.ZERO

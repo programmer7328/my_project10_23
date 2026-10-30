@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bl0xfnbi42omi" path="res://assests/scenes/water.tscn" id="6_goqih"]
 [ext_resource type="PackedScene" uid="uid://35wk3nx6xeeq" path="res://assests/scenes/spike_trap.tscn" id="7_xgvkb"]
 [ext_resource type="Texture2D" uid="uid://ra1g7pepi4vf" path="res://assests/arts/Sprite-door-Sheet.png" id="9_ycbfd"]
-[ext_resource type="Script" path="res://assests/scripts/door.gd" id="11_6is8o"]
 [ext_resource type="Script" uid="uid://2siy84r0otfd" path="res://assests/scripts/control.gd" id="11_c2cns"]
 [ext_resource type="Script" uid="uid://bc8b3b8ufivql" path="res://assests/scripts/title_screen.gd" id="12_c2cns"]
 [ext_resource type="PackedScene" uid="uid://dkeaaufhlnvkj" path="res://assests/scenes/rain_drop.tscn" id="13_68vls"]
@@ -557,9 +556,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3gxv"]
 size = Vector2(2.5, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp1ms"]
-size = Vector2(5805, 42.5)
-
 [node name="Main" type="Node2D" unique_id=33725227]
 script = ExtResource("1_k6l31")
 
@@ -597,7 +593,6 @@ position = Vector2(-806, 152)
 texture_filter = 1
 position = Vector2(1288, -784)
 sprite_frames = SubResource("SpriteFrames_w3gxv")
-script = ExtResource("11_6is8o")
 
 [node name="Area2D" type="Area2D" parent="door" unique_id=146984839]
 
@@ -803,12 +798,11 @@ position = Vector2(-886, 576)
 wait_time = 0.001
 autostart = true
 
-[node name="Rain" type="Area2D" parent="." unique_id=81325820 groups=["water"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rain" unique_id=1118978673 groups=["water"]]
-position = Vector2(482, 747.25)
-shape = SubResource("RectangleShape2D_qp1ms")
+[node name="RainTimer2" type="Timer" parent="." unique_id=1188347231]
+wait_time = 0.001
+autostart = true
 
 [connection signal="body_entered" from="door/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="door/Area2D" to="door" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RainTimer" to="." method="_on_rain_timer_timeout"]
+[connection signal="timeout" from="RainTimer2" to="." method="_on_rain_timer_2_timeout"]

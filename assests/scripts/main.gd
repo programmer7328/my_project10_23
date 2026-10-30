@@ -25,3 +25,13 @@ func _on_rain_timer_timeout() -> void:
 		randf_range(-930, 1292),
 		randf_range(-1000, 300)
 	)
+
+
+func _on_rain_timer_2_timeout() -> void:
+	var rain = rain_scene.instantiate()
+	add_child(rain)
+
+	rain.position = Vector2(
+		randf_range(-930, 1292),
+		randf_range(-1000, 300)
+	)
